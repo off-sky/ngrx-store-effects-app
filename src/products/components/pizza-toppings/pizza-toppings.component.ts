@@ -17,7 +17,7 @@ const PIZZA_TOPPINGS_ACCESSOR = {
   selector: 'pizza-toppings',
   providers: [PIZZA_TOPPINGS_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['pizza-toppings.component.scss'],
+  styleUrls: ['./pizza-toppings.component.scss'],
   template: `
     <div class="pizza-toppings">
       <div 

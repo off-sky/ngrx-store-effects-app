@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'pizza-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['pizza-item.component.scss'],
+  styleUrls: ['./pizza-item.component.scss'],
   template: `
     <div class="pizza-item">
       <a [routerLink]="['/products', pizza.id]">

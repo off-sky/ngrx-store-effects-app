@@ -9,7 +9,7 @@ import { ToppingsService } from '../../services/toppings.service';
 
 @Component({
   selector: 'product-item',
-  styleUrls: ['product-item.component.scss'],
+  styleUrls: ['./product-item.component.scss'],
   template: `
     <div 
       class="product-item">

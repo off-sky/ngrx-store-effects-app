@@ -6,7 +6,7 @@ const jsonServer = require('json-server');
 
 const rules = [
   { test: /\.html$/, loader: 'html-loader' },
-  { test: /\.scss$/, loaders: ['raw-loader', 'sass-loader'] },
+  { test: /\.scss$/, loaders: ['raw-loader', 'sass-loader' ] },
   { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file-loader' },
 ];
 
@@ -15,10 +15,6 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     },
-  }),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks: module => module.context && /node_modules/.test(module.context),
   }),
 ];
 

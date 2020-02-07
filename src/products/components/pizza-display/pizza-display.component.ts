@@ -24,7 +24,7 @@ export const DROP_ANIMATION = trigger('drop', [
   selector: 'pizza-display',
   animations: [DROP_ANIMATION],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['pizza-display.component.scss'],
+  styleUrls: ['./pizza-display.component.scss'],
   template: `
     <div class="pizza-display">
       <div class="pizza-display__base">

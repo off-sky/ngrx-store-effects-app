@@ -22,7 +22,7 @@ import { Topping } from '../../models/topping.model';
 
 @Component({
   selector: 'pizza-form',
-  styleUrls: ['pizza-form.component.scss'],
+  styleUrls: ['./pizza-form.component.scss'],
   template: `
     <div class="pizza-form">
       <form [formGroup]="form">

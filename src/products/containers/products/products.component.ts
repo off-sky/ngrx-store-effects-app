@@ -5,7 +5,7 @@ import { PizzasService } from '../../services/pizzas.service';
 
 @Component({
   selector: 'products',
-  styleUrls: ['products.component.scss'],
+  styleUrls: ['./products.component.scss'],
   template: `
     <div class="products">
       <div class="products__new">
