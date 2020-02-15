@@ -35,7 +35,46 @@ export const pizzaReducer = createReducer(
     ),
     on(
         PizzaAction.loadPizzasFail,
-        (state) => ({ ...state, loading: false, loaded: false, data: []})
+        (state) => ({ ...state, loading: false, loaded: false })
+    ),
+    on(
+        PizzaAction.createPizzaSuccess,
+        (state, action) => {
+            const added = action.pizza;
+            const entities = {
+                ...state.entities,
+                [added.id]: added
+            };
+            return {
+                ...state,
+                entities
+            };
+        }
+    ),
+    on(
+        PizzaAction.updatePizzaSuccess,
+        (state, action) => {
+            const updated = action.pizza;
+            const entities = {
+                ...state.entities,
+                [updated.id]: updated
+            };
+            return {
+                ...state,
+                entities
+            };
+        }
+    ),
+    on(
+        PizzaAction.deletePizzaSuccess,
+        (state, action) => {
+            const removed = action.pizza;
+            const { [removed.id]: pizza, ...entities } = state.entities;
+            return {
+                ...state,
+                entities
+            };
+        }
     )
 )
 

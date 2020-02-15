@@ -5,6 +5,7 @@ import { Topping } from '../../models/topping.model';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 import { Observable } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'product-item',
@@ -36,10 +37,10 @@ export class ProductItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(fromStore.ToppingActions.loadToppings());
     this.pizza$ = this.store.select(fromStore.getSelectedPizza);
     this.toppings$ = this.store.select(fromStore.getAllToppings);
     this.visualise$ = this.store.select(fromStore.getPizzaVisualised);
+    this.visualiseInitialToppings();
   }
 
   onSelect(event: number[]) {
@@ -47,13 +48,26 @@ export class ProductItemComponent implements OnInit {
   }
 
   onCreate(event: Pizza) {
-  
+    this.store.dispatch(fromStore.PizzaAction.createPizza({ pizza: event }));
   }
 
   onUpdate(event: Pizza) {
-    
+    this.store.dispatch(fromStore.PizzaAction.updatePizza({ pizza: event }));
   }
 
   onRemove(event: Pizza) {
+    this.store.dispatch(fromStore.PizzaAction.deletePizza({ pizza: event }));
+  }
+
+  private visualiseInitialToppings(): void {
+    this.pizza$
+      .pipe(
+        take(1)
+      )
+      .subscribe(pizza => {
+        const pizzaExists = !!(pizza && pizza.toppings);
+        const toppings = pizzaExists ? pizza.toppings.map(topping => topping.id) : [];
+        this.store.dispatch(fromStore.ToppingActions.visualiseToppings({ toppings }))
+      })
   }
 }

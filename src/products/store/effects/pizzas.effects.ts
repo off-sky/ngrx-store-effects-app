@@ -15,7 +15,6 @@ export class PizzaEffects {
     ) {
     }
 
-    @Effect()
     public loadPizzas$ = createEffect(
         () => this.actions$
             .pipe(
@@ -28,5 +27,50 @@ export class PizzaEffects {
                         )
                 })
             )
-    )
+    );
+
+    public createPizzas$ = createEffect(
+        () => this.actions$
+            .pipe(
+                ofType(fromPizzaActions.PizzaAction.createPizza),
+                map(action => action.pizza),
+                switchMap((pizza) => {
+                    return this.pizzasService.createPizza(pizza)
+                        .pipe(
+                            map(created => fromPizzaActions.PizzaAction.createPizzaSuccess({ pizza: created })),
+                            catchError(err => of(fromPizzaActions.PizzaAction.createPizzaFail({ err })))
+                        )
+                })
+            )
+    );
+
+    public updatePizzas$ = createEffect(
+        () => this.actions$
+            .pipe(
+                ofType(fromPizzaActions.PizzaAction.updatePizza),
+                map(action => action.pizza),
+                switchMap((pizza) => {
+                    return this.pizzasService.updatePizza(pizza)
+                        .pipe(
+                            map(updated => fromPizzaActions.PizzaAction.updatePizzaSuccess({ pizza: updated })),
+                            catchError(err => of(fromPizzaActions.PizzaAction.updatePizzaFail({ err })))
+                        )
+                })
+            )
+    );
+
+    public deletePizzas$ = createEffect(
+        () => this.actions$
+            .pipe(
+                ofType(fromPizzaActions.PizzaAction.deletePizza),
+                map(action => action.pizza),
+                switchMap((pizza) => {
+                    return this.pizzasService.removePizza(pizza)
+                        .pipe(
+                            map(deleted => fromPizzaActions.PizzaAction.deletePizzaSuccess({ pizza: deleted })),
+                            catchError(err => of(fromPizzaActions.PizzaAction.deletePizzaFail({ err })))
+                        )
+                })
+            )
+    );
 }
