@@ -12,6 +12,9 @@ import * as fromComponents from './components';
 // containers
 import * as fromContainers from './containers';
 
+// guards
+import * as fromGuards from './guards';
+
 // services
 import * as fromServices from './services';
 
@@ -19,16 +22,19 @@ import * as fromServices from './services';
 export const ROUTES: Routes = [
   {
     path: '',
+    canActivate: [ fromGuards.PizzasGuard ],
     component: fromContainers.ProductsComponent,
   },
   {
-    path: ':pizzaId',
+    path: 'new',
+    canActivate: [  fromGuards.ToppingsGuard ],
     component: fromContainers.ProductItemComponent,
   },
   {
-    path: 'new',
+    path: ':pizzaId',
+    canActivate: [ fromGuards.PizzaExistsGuard, fromGuards.ToppingsGuard ],
     component: fromContainers.ProductItemComponent,
-  },
+  }
 ];
 
 @NgModule({

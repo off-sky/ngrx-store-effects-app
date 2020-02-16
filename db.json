@@ -51,70 +51,18 @@
   ],
   "pizzas": [
     {
-      "name": "Blazin' Inferno",
+      "name": "Plain Ol' Pepperoni",
       "toppings": [
         {
-          "id": 10,
-          "name": "pepperoni"
+          "id": 12,
+          "name": "tomato"
         },
         {
           "id": 9,
           "name": "pepper"
-        },
-        {
-          "id": 3,
-          "name": "basil"
-        },
-        {
-          "id": 4,
-          "name": "chili"
-        },
-        {
-          "id": 2,
-          "name": "bacon"
-        },
-        {
-          "id": 11,
-          "name": "sweetcorn"
-        },
-        {
-          "id": 8,
-          "name": "onion"
         }
       ],
-      "id": 1
-    },
-    {
-      "name": "Plain Ol' Pepperoni",
-      "toppings": [],
       "id": 3
-    },
-    {
-      "name": "retret",
-      "toppings": [
-        {
-          "id": 7,
-          "name": "olive"
-        },
-        {
-          "id": 3,
-          "name": "basil"
-        },
-        {
-          "id": 6,
-          "name": "mushroom"
-        },
-        {
-          "id": 2,
-          "name": "bacon"
-        }
-      ],
-      "id": 4
-    },
-    {
-      "name": "retret",
-      "toppings": [],
-      "id": 5
     }
   ]
 }
